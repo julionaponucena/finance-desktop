@@ -176,11 +176,15 @@ class RegisterFormViewModelTest {
     }
 
     private void runTask(){
-        ArgumentCaptor<Runnable> runnableArgumentCaptor = ArgumentCaptor.forClass(Runnable.class);
+        ArgumentCaptor<RunnableHandler> runnableArgumentCaptor = ArgumentCaptor.forClass(RunnableHandler.class);
 
-        Mockito.verify(this.executor).execute(runnableArgumentCaptor.capture());
+        Mockito.verify(this.executor).execute(runnableArgumentCaptor.capture(),Mockito.any());
 
-        runnableArgumentCaptor.getValue().run();
+        try {
+            runnableArgumentCaptor.getValue().run();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void runHandleTask(){

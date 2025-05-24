@@ -1,0 +1,22 @@
+@import "colors.css";
+
+.add-button{
+    -fx-background-color: -fx-green;
+}
+
+.neutral-button{
+    -fx-background-color: -fx-neutral;
+}
+
+.view-button{
+    -fx-background-color: -fx-blue;
+}
+
+.delete-button{
+    -fx-background-color: -fx-red;
+}
+
+.button{
+    -fx-text-fill: white;
+    -fx-pref-width: 100;
+}

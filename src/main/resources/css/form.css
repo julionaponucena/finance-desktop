@@ -1,0 +1,40 @@
+@import "colors.css";
+
+.container-form{
+    -fx-padding: 20;
+    -fx-spacing: 20;
+}
+
+.container-form, .sub-container{
+    -fx-alignment: CENTER;
+    -fx-spacing: 20;
+}
+
+.big-textfield{
+    -fx-max-width: INFINITY;
+    -mfx-float-mode:BORDER;
+}
+
+.floating-text{
+    -fx-text-fill: -fx-green;
+}
+
+.mfx-text-field {
+    -fx-border-color: -fx-green;
+}
+
+.input{
+    -fx-pref-height: 50;
+}
+
+.input:focused{
+    -fx-background-color: -fx-green,white;
+}
+
+.form-footer{
+    -fx-alignment: BASELINE-CENTER;
+}
+
+.error-label{
+    -fx-text-fill: red;
+}

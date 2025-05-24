@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import io.github.palexdev.materialfx.controls.MFXTableColumn?>
+<?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
+<VBox styleClass="container-view" xmlns="http://javafx.com/javafx/23.0.1" stylesheets="@../css/buttons.css, @../css/view.css"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.github.julionaponucena.financedesktop.modules.category.controllers.CategoryController">
+    <MFXButton onAction="#add" styleClass="big-button, add-button" text="Adicionar"/>
+    <StackPane VBox.vgrow="ALWAYS">
+        <MFXTableView footerVisible="false" maxWidth="Infinity" maxHeight="Infinity" visible="false" fx:id="tableView">
+            <tableColumns>
+                <MFXTableColumn prefWidth="200" fx:id="nameColumn" text="Nome"/>
+                <MFXTableColumn fx:id="totalColumn" text="Total Uso"/>
+                <MFXTableColumn prefWidth="400" fx:id="actionsColumn" text="Ações"/>
+            </tableColumns>
+        </MFXTableView>
+        <MFXProgressSpinner fx:id="progressSpinner"/>
+    </StackPane>
+</VBox>

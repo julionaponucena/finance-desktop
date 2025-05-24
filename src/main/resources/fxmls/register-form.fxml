@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1000" styleClass="container-form" stylesheets="@../css/buttons.css, @../css/form.css"
+      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.github.julionaponucena.financedesktop.modules.registers.controllers.RegisterControllerForm">
+    <Label fx:id="titleError" styleClass="error-label"/>
+    <MFXTextField fx:id="titleInput" floatingText="Título" styleClass="big-textfield" />
+    <StackPane>
+        <HBox fx:id="containerCombo" styleClass="sub-container" visible="false">
+            <MFXComboBox fx:id="comboCategory" floatingText="Categoria" />
+            <MFXButton onAction="#addCategory" styleClass="button, add-button" text="Adicionar" />
+        </HBox>
+        <MFXProgressSpinner fx:id="progressSpinner" />
+    </StackPane>
+    <MFXTableView footerVisible="false" fx:id="tableView" prefHeight="600" prefWidth="600">
+        <tableColumns>
+            <MFXTableColumn fx:id="contentColumn" prefWidth="600" text="Categoria" />
+            <MFXTableColumn fx:id="deleteColumn" prefWidth="600" text="Ação" />
+        </tableColumns>
+    </MFXTableView>
+    <GridPane hgap="5" vgap="20" >
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints/>
+        </columnConstraints>
+
+        <Label fx:id="valueError" alignment="CENTER" styleClass="error-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField styleClass="input" fx:id="valueInput" GridPane.hgrow="ALWAYS"
+                   GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <MFXComboBox fx:id="typeCombo" floatingText="Tipo" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </GridPane>
+    <Label fx:id="dateError" styleClass="error-label"/>
+    <MFXDatePicker fx:id="datePicker" editable="false" floatMode="INLINE" floatingText="Data" maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+    <HBox styleClass="form-footer">
+        <MFXButton styleClass="button, add-button" text="Salvar" onAction="#save" />
+    </HBox>
+</VBox>

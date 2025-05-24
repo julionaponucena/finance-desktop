@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox prefWidth="150.0" styleClass="sidebar" xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.julionaponucena.financedesktop.modules.main.controllers.SidebarController">
+    <StackPane onMouseClicked="#goToCategories" prefHeight="388.0" prefWidth="140.0" styleClass="menu-container" VBox.vgrow="ALWAYS">
+        <Label alignment="CENTER" styleClass="menu-label" text="Categorias" StackPane.alignment="CENTER" />
+    </StackPane>
+    <StackPane onMouseClicked="#goToBlockRegisters" prefHeight="388.0" prefWidth="140.0" styleClass="menu-container" VBox.vgrow="ALWAYS">
+        <Label alignment="CENTER" styleClass="menu-label" text="Blocos" StackPane.alignment="CENTER"/>
+    </StackPane>
+</VBox>

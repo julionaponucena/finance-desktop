@@ -1,0 +1,17 @@
+@import "colors.css";
+
+.menu-label{
+    -fx-text-fill: white;
+}
+
+.menu-container:hover{
+    -fx-background-color: -fx-green;
+}
+
+.menu-label:hover{
+    -fx-underline: true;
+}
+
+.sidebar{
+    -fx-background-color:#3CB371;
+}

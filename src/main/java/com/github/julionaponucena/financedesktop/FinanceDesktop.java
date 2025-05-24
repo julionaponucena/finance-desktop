@@ -1,10 +1,18 @@
 package com.github.julionaponucena.financedesktop;
 
+
+import com.github.julionaponucena.financedesktop.modules.main.controllers.factories.MainControllerFactory;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Optional;
+import io.github.palexdev.materialfx.theming.JavaFXThemes;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 
 /**
  * JavaFX App
@@ -12,18 +20,37 @@ import javafx.stage.Stage;
 public class FinanceDesktop extends Application {
 
     @Override
-    public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
+    public void start(Stage stage) throws IOException {
+        UserAgentBuilder.builder()
+                .themes(JavaFXThemes.MODENA)
+                .themes(MaterialFXStylesheets.forAssemble(true))
+                .setDeploy(true)
+                .setResolveAssets(true)
+                .build()
+                .setGlobal();
 
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + " version 2.");
-        var scene = new Scene(new StackPane(label), 640, 480);
+        Optional<String> optionalString = getParameters().getUnnamed().stream().findFirst();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/main.fxml"));
+
+
+        MainControllerFactory controllerFactory = optionalString.map(MainControllerFactory::new).orElseGet(MainControllerFactory::new);
+
+        loader.setControllerFactory(controllerFactory);
+
+        Scene scene = new Scene(loader.load());
+
         stage.setScene(scene);
+
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
+
+
         stage.show();
     }
 
+
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 
 }

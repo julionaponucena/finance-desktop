@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<VBox stylesheets="@../css/buttons.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="com.github.julionaponucena.financedesktop.modules.registers.controllers.RegisterController">
+    <padding>
+        <Insets left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <MFXButton maxWidth="Infinity" styleClass="button, add-button" text="Adicionar" onAction="#add">
+        <VBox.margin>
+            <Insets bottom="20.0"/>
+        </VBox.margin>
+    </MFXButton>
+    <StackPane VBox.vgrow="ALWAYS">
+        <MFXTableView footerVisible="false" fx:id="tableView" maxHeight="Infinity" maxWidth="Infinity" visible="false">
+            <tableColumns>
+                <MFXTableColumn  fx:id="titleColumn" text="Título"/>
+                <MFXTableColumn  fx:id="categoryColumn" text="Categorias"/>
+                <MFXTableColumn  fx:id="dateColumn" text="Data"/>
+                <MFXTableColumn  fx:id="valueColumn" text="Valor"/>
+                <MFXTableColumn fx:id="actionsColumn" text="Ações"/>
+            </tableColumns>
+        </MFXTableView>
+        <MFXProgressSpinner fx:id="progressSpinner"/>
+    </StackPane>
+    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="145.0">
+        <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="190.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="totalText">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets right="20.0"/>
+                </HBox.margin>
+            </Text>
+        </HBox>
+    </HBox>
+</VBox>

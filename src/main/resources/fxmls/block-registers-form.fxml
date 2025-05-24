@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox prefHeight="150.0" prefWidth="600.0" stylesheets="@../css/buttons.css, @../css/form.css" xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.julionaponucena.financedesktop.modules.blockregister.controllers.BlockRegisterFormController"
+      styleClass="container-form">
+   <Label styleClass="error-label" fx:id="errorLabel"/>
+   <MFXTextField maxHeight="500" fx:id="titleInput" styleClass="big-textfield" floatingText="Título" />
+   <HBox styleClass="form-footer">
+      <MFXButton styleClass="button, add-button" onAction="#save" text="Salvar" />
+   </HBox>
+</VBox>

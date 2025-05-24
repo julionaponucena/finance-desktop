@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootContainer" prefHeight="800.0" prefWidth="1500.0"
+            stylesheets="@../css/main.css"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.julionaponucena.financedesktop.modules.main.controllers.MainController">
+
+    <top>
+        <HBox prefHeight="35.0" prefWidth="600.0">
+            <MenuBar prefHeight="34.0" prefWidth="142.0">
+                <Menu mnemonicParsing="false" text="Arquivos">
+                    <MenuItem mnemonicParsing="false" text="Abrir" onAction="#open"/>
+                    <MenuItem mnemonicParsing="false" text="Criar" onAction="#create"/>
+                </Menu>
+            </MenuBar>
+        </HBox>
+    </top>
+   <center>
+      <VBox fx:id="centerContainer" maxHeight="Infinity" prefWidth="200" BorderPane.alignment="TOP_CENTER">
+          <fx:include source="index.fxml" VBox.vgrow="ALWAYS" />
+      </VBox>
+   </center>
+</BorderPane>

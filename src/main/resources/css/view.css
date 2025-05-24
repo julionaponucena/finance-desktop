@@ -1,0 +1,21 @@
+.container-view{
+    -fx-padding: 20 20 20 20;
+    -fx-spacing: 20;
+}
+
+.view-footer{
+    -fx-alignment: CENTER_RIGHT;
+    -fx-end-margin: 20;
+    -fx-pref-height: 100;
+    -fx-pref-width: 145;
+}
+
+.total-text {
+    -fx-font-size: 14;
+    -fx-stroke-type: OUTSIDE;
+}
+
+.big-button{
+    -fx-max-width: INFINITY;
+    -fx-end-margin: 20;
+}

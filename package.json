@@ -10,7 +10,7 @@
         "jdk": false,
         "javaVersion": "21",
         "documentTypes": [{
-            "editor": false,
+            "editor": true,
             "extension": "finance",
             "custom": true,
             "mimetype": "application/vnd.sqlite3"

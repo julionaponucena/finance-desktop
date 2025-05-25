@@ -2,6 +2,9 @@ package com.github.julionaponucena.financedesktop;
 
 
 import com.github.julionaponucena.financedesktop.modules.main.controllers.factories.MainControllerFactory;
+import io.github.palexdev.materialfx.theming.JavaFXThemes;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,9 +13,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
-import io.github.palexdev.materialfx.theming.JavaFXThemes;
-import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
-import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 
 /**
  * JavaFX App

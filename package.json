@@ -5,9 +5,9 @@
     "main": "index.js",
     "preferGlobal": true,
     "repository": "",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "jdeploy": {
-        "jdk": false,
+        "jdk": true,
         "javaVersion": "21",
         "documentTypes": [{
             "editor": false,
@@ -15,14 +15,14 @@
             "custom": true,
             "mimetype": "application/vnd.sqlite3"
         }],
-        "jar": "target/finance-desktop-1.0.0.jar",
-        "javafx": true,
-        "title": "Finance Desktop",
         "linux": {
             "packageName": "finance-desktop",
             "categories": "Finance",
             "maintainer": "Júlio de Alcântara <julio.naponucena@hotmail.com>"
-        }
+        },
+        "jar": "target/finance-desktop-1.0.0.jar",
+        "javafx": true,
+        "title": "Finance Desktop"
     },
     "dependencies": {
         "njre": "^0.2.0",
@@ -31,5 +31,6 @@
     "license": "ISC",
     "name": "finance-desktop",
     "files": ["jdeploy-bundle"],
-    "scripts": {"test": "echo \"Error: no test specified\" && exit 1"}
+    "scripts": {"test": "echo \"Error: no test specified\" && exit 1"},
+    "homepage": ""
 }

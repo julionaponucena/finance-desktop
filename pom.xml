@@ -100,7 +100,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.github.julionaponucena.financedesktop</mainClass>
+                                    <mainClass>com.github.julionaponucena.financedesktop.FinanceDesktop</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

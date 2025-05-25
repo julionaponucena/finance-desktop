@@ -1,27 +1,26 @@
 {
-    "bin": {"finance-desktop": "jdeploy-bundle/jdeploy.js"},
+    "bin": {
+        "finance-desktop": "jdeploy-bundle/jdeploy.js"
+    },
     "author": "Júlio Naponucena de Alcântara",
-    "description": "Software Básico de controle de finanças baseado em planilhas",
+    "description": "Parent for JavaFX starter project",
     "main": "index.js",
     "preferGlobal": true,
     "repository": "",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "jdeploy": {
-        "jdk": true,
+        "jdk": false,
         "javaVersion": "21",
-        "documentTypes": [{
-            "editor": false,
-            "extension": "finance",
-            "custom": true,
-            "mimetype": "application/vnd.sqlite3"
-        }],
-        "linux": {
-            "packageName": "finance-desktop",
-            "categories": "Finance",
-            "maintainer": "Júlio de Alcântara <julio.naponucena@hotmail.com>"
-        },
+        "documentTypes": [
+            {
+                "editor": false,
+                "extension": "finance",
+                "custom": true,
+                "mimetype": "application/vnd.sqlite3"
+            }
+        ],
         "jar": "target/finance-desktop-1.0.0.jar",
-        "javafx": true,
+        "javafx": false,
         "title": "Finance Desktop"
     },
     "dependencies": {
@@ -30,7 +29,11 @@
     },
     "license": "ISC",
     "name": "finance-desktop",
-    "files": ["jdeploy-bundle"],
-    "scripts": {"test": "echo \"Error: no test specified\" && exit 1"},
+    "files": [
+        "jdeploy-bundle"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
     "homepage": ""
 }

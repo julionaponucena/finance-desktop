@@ -17,7 +17,12 @@
         }],
         "jar": "target/finance-desktop-1.0.0.jar",
         "javafx": true,
-        "title": "Finance Desktop"
+        "title": "Finance Desktop",
+        "linux": {
+            "packageName": "finance-desktop",
+            "categories": "Finance",
+            "maintainer": "Júlio de Alcântara <julio.naponucena@hotmail.com>"
+        }
     },
     "dependencies": {
         "njre": "^0.2.0",

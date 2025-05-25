@@ -1,7 +1,7 @@
 {
     "bin": {"finance-desktop": "jdeploy-bundle/jdeploy.js"},
     "author": "Júlio Naponucena de Alcântara",
-    "description": "Parent for JavaFX starter project",
+    "description": "Software Básico de controle de finanças baseado em planilhas",
     "main": "index.js",
     "preferGlobal": true,
     "repository": "",

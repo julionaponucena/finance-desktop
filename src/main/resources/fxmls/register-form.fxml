@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1000" styleClass="container-form" stylesheets="@../css/buttons.css, @../css/form.css"
+<VBox alignment="CENTER" prefHeight="700" prefWidth="700" styleClass="container-form" stylesheets="@../css/buttons.css, @../css/form.css"
       xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.github.julionaponucena.financedesktop.modules.registers.controllers.RegisterControllerForm">
     <Label fx:id="titleError" styleClass="error-label"/>

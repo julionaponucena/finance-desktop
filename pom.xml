@@ -14,7 +14,7 @@
     <name>Finance Desktop</name>
     <artifactId>finance-desktop</artifactId>
     <description>Software Básico de controle de finanças baseado em planilhas</description>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

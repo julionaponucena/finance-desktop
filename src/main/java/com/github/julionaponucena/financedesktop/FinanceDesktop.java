@@ -44,6 +44,9 @@ public class FinanceDesktop extends Application {
 
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
 
+        stage.setMaximized(true);
+
+        stage.setTitle("Finance Desktop");
 
         stage.show();
     }

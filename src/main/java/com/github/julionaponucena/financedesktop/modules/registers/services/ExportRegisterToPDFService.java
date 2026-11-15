@@ -1,7 +1,6 @@
 package com.github.julionaponucena.financedesktop.modules.registers.services;
 
 import com.github.julionaponucena.financedesktop.modules.blockregister.repositories.BlockRegisterRepository;
-import com.github.julionaponucena.financedesktop.modules.registers.data.inputs.ExportRegisterInput;
 import com.github.julionaponucena.financedesktop.modules.registers.data.inputs.ExportRegisterInputWrapper;
 import com.github.julionaponucena.financedesktop.modules.registers.repositories.RegisterOutputGenerator;
 import freemarker.template.Configuration;
@@ -11,11 +10,9 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.io.OutputStream;
 import java.io.StringWriter;
-import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 @RequiredArgsConstructor

@@ -50,7 +50,7 @@ class ReactiveTotalValueTest {
         Mockito.verify(formatter, Mockito.times(1)).format(captor.capture());
 
         Assertions.assertEquals(new BigDecimal("17.95"), captor.getValue());
-        Assertions.assertEquals("Total: R$ 17,95",value);
+        Assertions.assertEquals("Saldo: R$ 17,95",value);
     }
 
     private static ListRegisterOUTFX createListRegisterOUTFX(BigDecimal value) {

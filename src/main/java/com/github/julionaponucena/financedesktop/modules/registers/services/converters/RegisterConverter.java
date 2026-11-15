@@ -8,7 +8,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class RegisterConverter {

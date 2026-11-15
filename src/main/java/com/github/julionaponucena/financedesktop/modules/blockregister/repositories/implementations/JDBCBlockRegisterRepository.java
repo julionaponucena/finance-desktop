@@ -100,4 +100,17 @@ public class JDBCBlockRegisterRepository implements BlockRegisterRepository {
 
         return jdbcRepository.getBoolean("exists");
     }
+
+    @Override
+    public String getTitle(int id) throws InternalServerException {
+        String sql = "SELECT title FROM registers WHERE id_block_register = ?";
+
+        final var jdbcRepository = new JDBCRepository(sql,id);
+
+        jdbcRepository.executeQuery();
+
+        jdbcRepository.next();
+
+        return  jdbcRepository.getString("title");
+    }
 }

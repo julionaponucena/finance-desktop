@@ -1,7 +1,12 @@
 package com.github.julionaponucena.financedesktop.modules.registers.services.converters;
 
+import com.github.julionaponucena.financedesktop.modules.registers.data.inputs.ExportRegisterInput;
 import com.github.julionaponucena.financedesktop.modules.registers.data.outs.*;
 import com.github.julionaponucena.financedesktop.modules.registers.data.vos.CategoryPersistenceVO;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -48,6 +53,25 @@ class RegisterConverterTest {
         Assertions.assertEquals(registerOUT.date(),result.date().getValue());
         Assertions.assertEquals(registerOUT.value(),result.value().getValue());
         validateListCategoryOUTFX(registerOUT.categories(),result.categories());
+    }
+
+    @Test
+    void convertToRegisterInput(){
+        ObservableList<ListCategoryOUTFX> ids = FXCollections.observableArrayList();
+
+        final var listRegister =new ListRegisterOUTFX(1,
+                new SimpleStringProperty("teste"),new SimpleObjectProperty<>(LocalDate.now()),ids,
+                new SimpleObjectProperty<>(new BigDecimal("10.00")));
+
+        final var totalValue = "R$ 10,00";
+
+        final ExportRegisterInput input = this.registerConverter
+                .convertToRegisterInput(1,listRegister);
+
+        Assertions.assertEquals(listRegister.date().getValue(),input.date());
+        Assertions.assertEquals(listRegister.title().getValue(),input.name());
+        Assertions.assertEquals(totalValue,input.value());
+        Assertions.assertEquals(1,input.idBlock());
     }
 
     private static List<ListCategoryRelOUT> createListCategoryOUTFX() {

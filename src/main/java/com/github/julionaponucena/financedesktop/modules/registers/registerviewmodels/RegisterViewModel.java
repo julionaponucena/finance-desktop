@@ -7,7 +7,10 @@ import com.github.julionaponucena.financedesktop.commons.executor.JobExecutor;
 import com.github.julionaponucena.financedesktop.commons.listmanager.ListManagerFX;
 import com.github.julionaponucena.financedesktop.modules.registers.controllers.observers.CreateRegisterObserver;
 import com.github.julionaponucena.financedesktop.modules.registers.controllers.observers.UpdateRegisterObserver;
+import com.github.julionaponucena.financedesktop.modules.registers.data.inputs.ExportRegisterInput;
+import com.github.julionaponucena.financedesktop.modules.registers.data.inputs.ExportRegisterInputWrapper;
 import com.github.julionaponucena.financedesktop.modules.registers.data.outs.*;
+import com.github.julionaponucena.financedesktop.modules.registers.services.ExportRegisterToPDFService;
 import com.github.julionaponucena.financedesktop.modules.registers.services.RegisterService;
 import com.github.julionaponucena.financedesktop.modules.registers.services.converters.RegisterConverter;
 import javafx.application.Platform;
@@ -27,6 +30,7 @@ public class RegisterViewModel implements CreateRegisterObserver, UpdateRegister
     private final JobExecutor executor;
     private final RegisterConverter converter;
     private final ListManagerFX<ListRegisterOUTFX> data;
+    private final ExportRegisterToPDFService exportService;
 
     @Getter
     private final SimpleStringProperty total;
@@ -38,7 +42,8 @@ public class RegisterViewModel implements CreateRegisterObserver, UpdateRegister
 
     public RegisterViewModel(RegisterService service, JobExecutor executor,
                              RegisterConverter converter , ListManagerFX<ListRegisterOUTFX> data,
-                             SimpleStringProperty total, SimpleBooleanProperty isLoading, StringBinding totalBinding) {
+                             SimpleStringProperty total, SimpleBooleanProperty isLoading, StringBinding totalBinding,
+                             ExportRegisterToPDFService exportService) {
         this.service = service;
         this.executor = executor;
         this.converter=converter;
@@ -46,9 +51,10 @@ public class RegisterViewModel implements CreateRegisterObserver, UpdateRegister
         this.total=total;
         this.isLoading = isLoading;
         this.totalBinding=totalBinding;
+        this.exportService = exportService;
     }
 
-    public RegisterViewModel(RegisterService service, JobExecutor executor,RegisterConverter converter) {
+    public RegisterViewModel(RegisterService service, JobExecutor executor,RegisterConverter converter, ExportRegisterToPDFService exportService) {
         this.service = service;
         this.executor = executor;
         this.converter=converter;
@@ -60,6 +66,7 @@ public class RegisterViewModel implements CreateRegisterObserver, UpdateRegister
                 .call(o -> o.value().getValue(),this.data.get());
 
         this.totalBinding=Bindings.createStringBinding(reactiveTotalValue,this.data.get(),this.data.getValue());
+        this.exportService = exportService;
     }
 
     public void searchRegisters(int blockId) {
@@ -114,5 +121,23 @@ public class RegisterViewModel implements CreateRegisterObserver, UpdateRegister
 
     public ObservableList<ListRegisterOUTFX> getValue() {
         return this.data.getValue();
+    }
+
+    public void export(int blockId){
+
+        List<ExportRegisterInput> inputs = this.data.getValue().stream()
+                .map(listRegisterOUTFX -> this.converter
+                        .convertToRegisterInput(blockId,listRegisterOUTFX)).toList();
+
+        final var data = new ExportRegisterInputWrapper(inputs, blockId,total.getValue().replace("Total","Saldo"));
+
+        try {
+
+            this.exportService.execute(data);
+        }catch (Exception e){
+            final var handler = new ExceptionHandler("Não foi possível exportar o arquivo");
+
+            handler.execute(e);
+        }
     }
 }

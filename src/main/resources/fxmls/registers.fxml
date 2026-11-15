@@ -5,8 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
 <VBox stylesheets="@../css/buttons.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="com.github.julionaponucena.financedesktop.modules.registers.controllers.RegisterController">
+      fx:controller="com.github.julionaponucena.financedesktop.modules.registers.controllers.RegisterController">
     <padding>
         <Insets left="20.0" right="20.0" top="20.0"/>
     </padding>
@@ -27,8 +28,18 @@ fx:controller="com.github.julionaponucena.financedesktop.modules.registers.contr
         </MFXTableView>
         <MFXProgressSpinner fx:id="progressSpinner"/>
     </StackPane>
-    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="145.0">
-        <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="190.0">
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="145.0">
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+            <Text strokeType="OUTSIDE" fx:id="titleLabel" >
+                <font>
+                    <Font size="40.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets left="20.0"/>
+                </HBox.margin>
+            </Text>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT" prefHeight="63.0" prefWidth="250.0">
             <Text strokeType="OUTSIDE" strokeWidth="0.0" fx:id="totalText">
                 <font>
                     <Font size="14.0"/>
@@ -37,6 +48,7 @@ fx:controller="com.github.julionaponucena.financedesktop.modules.registers.contr
                     <Insets right="20.0"/>
                 </HBox.margin>
             </Text>
+            <Button styleClass="button, add-button" text="Exportar" onAction="#export"/>
         </HBox>
     </HBox>
 </VBox>

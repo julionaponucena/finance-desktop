@@ -54,7 +54,7 @@ public class BlockRegisterActionRowCellFactory implements Function<ListBlockRegi
                     ));
 
             viewButton.setOnAction(actionEvent ->
-                    this.routerFX.goToRegisters(listBlockRegisterOUTFX1.id())
+                    this.routerFX.goToRegisters(listBlockRegisterOUTFX1)
             );
 
             if(listBlockRegisterOUTFX1.containRegister()){

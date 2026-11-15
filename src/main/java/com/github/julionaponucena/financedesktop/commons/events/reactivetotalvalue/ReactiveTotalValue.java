@@ -20,6 +20,6 @@ public class ReactiveTotalValue<T> implements Callable<String> {
     public String call(){
         BigDecimal totalValue = this.data.getValue().stream().map(function).reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        return "Total: R$ " + formatter.format(totalValue);
+        return "Saldo: R$ " + formatter.format(totalValue);
     }
 }

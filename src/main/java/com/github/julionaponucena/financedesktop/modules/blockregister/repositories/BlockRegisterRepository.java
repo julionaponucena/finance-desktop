@@ -18,4 +18,6 @@ public interface BlockRegisterRepository {
     void delete(int id) throws InternalServerException;
 
     boolean existsRegister(int id) throws InternalServerException;
+
+    String getTitle(int id) throws InternalServerException;
 }

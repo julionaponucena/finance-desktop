@@ -5,8 +5,10 @@ import com.github.julionaponucena.financedesktop.commons.exceptions.InternalServ
 import com.github.julionaponucena.financedesktop.commons.executor.JobExecutor;
 import com.github.julionaponucena.financedesktop.commons.executor.RunnableHandler;
 import com.github.julionaponucena.financedesktop.commons.listmanager.ListManagerFX;
+import com.github.julionaponucena.financedesktop.modules.registers.data.inputs.ExportRegisterInputWrapper;
 import com.github.julionaponucena.financedesktop.modules.registers.data.outs.*;
 import com.github.julionaponucena.financedesktop.modules.registers.data.vos.CategoryPersistenceVO;
+import com.github.julionaponucena.financedesktop.modules.registers.services.ExportRegisterToPDFService;
 import com.github.julionaponucena.financedesktop.modules.registers.services.RegisterService;
 import com.github.julionaponucena.financedesktop.modules.registers.services.converters.RegisterConverter;
 import javafx.application.Platform;
@@ -39,6 +41,7 @@ class RegisterViewModelTest {
     private ArgumentCaptor<RunnableHandler> runnableCaptor;
     private RegisterConverter converter;
     private StringBinding totalBinding;
+    private ExportRegisterToPDFService exportRegisterToPDFService;
 
     @BeforeEach
     void config() {
@@ -49,7 +52,9 @@ class RegisterViewModelTest {
         this.isLoading = Mockito.mock(SimpleBooleanProperty.class);
         this.converter= Mockito.mock(RegisterConverter.class);
         this.totalBinding = Mockito.mock(StringBinding.class);
-        this.viewModel = new RegisterViewModel(service, executor,converter,data,total,isLoading,totalBinding);
+        this.exportRegisterToPDFService = Mockito.mock(ExportRegisterToPDFService.class);
+        this.viewModel = new RegisterViewModel(service, executor,converter,data,total,isLoading,totalBinding,
+                exportRegisterToPDFService);
         this.runnableCaptor = ArgumentCaptor.forClass(RunnableHandler.class);
     }
 
@@ -176,6 +181,24 @@ class RegisterViewModelTest {
         ObservableList<ListRegisterOUTFX> result = this.viewModel.getValue();
 
         Assertions.assertSame(data,result);
+    }
+
+    @Test
+    void export() throws Exception{
+        Mockito.when(this.data.getValue()).thenReturn(FXCollections.observableArrayList());
+        Mockito.when(this.total.getValue()).thenReturn("Total: R$ 10,00");
+
+        this.viewModel.export(1);
+
+        ArgumentCaptor<ExportRegisterInputWrapper> argumentCaptor = ArgumentCaptor.forClass(ExportRegisterInputWrapper.class);
+
+        Mockito.verify(this.exportRegisterToPDFService,Mockito.times(1)).execute(argumentCaptor.capture());
+
+        final ExportRegisterInputWrapper result = argumentCaptor.getValue();
+
+        Assertions.assertEquals(0, result.inputs().size());
+        Assertions.assertEquals(1, result.blockId());
+        Assertions.assertEquals("Saldo: R$ 10,00", result.totalValue());
     }
 
     private void runTask(){

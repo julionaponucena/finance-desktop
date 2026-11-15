@@ -1,6 +1,7 @@
 package com.github.julionaponucena.financedesktop.commons;
 
 import com.github.julionaponucena.financedesktop.modules.blockregister.controllers.factories.BlockRegisterControllerFactory;
+import com.github.julionaponucena.financedesktop.modules.blockregister.data.outs.ListBlockRegisterOUTFX;
 import com.github.julionaponucena.financedesktop.modules.category.controllers.factories.CategoryControllerFactory;
 import com.github.julionaponucena.financedesktop.modules.main.controllers.factories.SidebarControllerFactory;
 import com.github.julionaponucena.financedesktop.modules.registers.controllers.factories.RegisterControllerFactory;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,11 +41,16 @@ public class RouterFX {
         }
     }
 
-    public void goToRegisters(int blockId){
+    public void goToRegisters(ListBlockRegisterOUTFX blockRegister){
         URL resource =this.buildResource("registers.fxml");
 
         FXMLLoader loader = new FXMLLoader(resource);
-        loader.setControllerFactory(new RegisterControllerFactory(blockId));
+
+
+
+        Window window = this.rootContainer.getScene().getWindow();
+
+        loader.setControllerFactory(new RegisterControllerFactory(blockRegister, window));
 
 
         this.changeScreen(loader);

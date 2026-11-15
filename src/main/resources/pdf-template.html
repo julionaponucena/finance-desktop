@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        @page { size: A4; margin: 20mm; }
+        body { font-family: "Helvetica", "Arial", sans-serif; font-size: 10pt; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #333; padding: 6px; text-align: left; }
+        th { background-color: #f0f0f0; font-weight: bold; }
+    </style>
+</head>
+<body>
+<h2>${title}</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Data</th>
+        <th>Valor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <#list itens as item>
+    <tr>
+        <td>${item.name}</td>
+        <td>${item.date}</td>
+        <td>${item.value}</td>
+    </tr>
+    </#list>
+    </tbody>
+</table>
+    <div style="text-align: right; margin-top: 20px;">
+        <span>${totalValue}</span>
+    </div>
+</body>
+</html>
